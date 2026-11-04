@@ -3,7 +3,8 @@ name: Build Salary Calculator APK
 "on":
 workflow_dispatch:
 push:
-branches: [ main ]
+branches:
+- main
 
 jobs:
 build:
@@ -38,3 +39,4 @@ steps:
     with:
       name: Salary-Calculator-APK
       path: app/build/outputs/apk/debug/app-debug.apk
+  
