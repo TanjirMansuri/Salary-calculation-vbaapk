@@ -1,6 +1,6 @@
 name: Build Salary Calculator APK
 
-"on":
+on:
 workflow_dispatch:
 push:
 branches:
@@ -9,10 +9,9 @@ branches:
 jobs:
 build:
 runs-on: ubuntu-latest
-
 steps:
-  - name: Checkout
-    uses: actions/checkout@v4
+- name: Checkout
+uses: actions/checkout@v4
 
   - name: Setup Java
     uses: actions/setup-java@v5
@@ -39,4 +38,3 @@ steps:
     with:
       name: Salary-Calculator-APK
       path: app/build/outputs/apk/debug/app-debug.apk
-  
