@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b35"><title>My Salary Calculator</title>
+<style>
+:root{--green:#173b35;--gold:#c49b55;--bg:#f4f6f3;--card:#fff;--muted:#64736d}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:#1c2924}.top{background:var(--green);color:#fff;padding:22px 18px 26px}.top h1{font-size:22px;margin:0 0 5px}.top p{margin:0;color:#d8e5df;font-size:13px}.wrap{max-width:620px;margin:auto;padding:14px}.card{background:var(--card);border-radius:15px;padding:16px;margin:0 0 13px;box-shadow:0 3px 14px #183b3510}.card h2{font-size:16px;margin:0 0 13px;color:var(--green)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}.field input,.field select{width:100%;padding:12px 10px;border:1px solid #d9e1dc;border-radius:9px;font-size:16px;background:#fff;color:#17251f}.field.full{grid-column:1/-1}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin-top:9px}.result{background:var(--green);color:white;border-radius:15px;padding:17px;margin-bottom:13px}.result .label{font-size:13px;color:#d9e5df}.amount{font-size:30px;font-weight:700;margin:5px 0 12px}.rows{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:13px;border-top:1px solid #ffffff30;padding-top:11px}.rows div:nth-child(even){text-align:right}.sub{color:#d9e5df}.btn{background:var(--gold);color:#fff;border:0;border-radius:9px;padding:12px 16px;font-weight:700;width:100%;font-size:15px}.small{font-size:11px;color:var(--muted);text-align:center;padding:8px 4px 18px}.pill{display:inline-block;background:#edf4ef;color:var(--green);padding:5px 8px;border-radius:20px;font-size:11px;margin-top:8px}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+</style></head>
+<body><header class="top"><h1>My Salary Calculator</h1><p>Personal monthly salary estimate</p></header><main class="wrap">
+<section class="card"><h2>Month & Saved Salary Structure</h2><div class="grid">
+<div class="field"><label for="month">Salary month</label><select id="month"></select></div>
+<div class="field"><label for="year">Year</label><input id="year" type="number" min="2000" max="2100" value="2026"></div>
+<div class="field"><label for="basic">Basic (₹)</label><input id="basic" type="number" min="0" step="0.01" value="14209"></div>
+<div class="field"><label for="conveyance">Conveyance (₹)</label><input id="conveyance" type="number" min="0" step="0.01" value="1338"></div>
+<div class="field"><label for="leave">Leave encashment (₹)</label><input id="leave" type="number" min="0" step="0.01" value="547"></div>
+<div class="field"><label for="bonus">Bonus (Pay Rate) (₹)</label><input id="bonus" type="number" min="0" step="0.01" value="1229"></div>
+<div class="field"><label for="special">Special Allowance (fixed) (₹)</label><input id="special" type="number" min="0" step="0.01" value="1000"></div>
+<div class="field"><label>Calculated Pay Rate Total (duty rate base)</label><input id="fixed" type="text" readonly value="₹17,323.00"></div>
+<div class="field"><label>Fixed monthly salary incl. Special Allowance</label><input id="monthlyfixed" type="text" readonly value="₹18,323.00"></div>
+</div><div class="hint">Ye values aapki salary slips se pre-filled hain. Special Allowance ₹1,000 fixed monthly earning mein add hota hai. Duty payment ka Pay Rate Total Basic + Conveyance + Leave Encashment + Bonus (Pay Rate) se niklega; Saturday/Sunday aur holiday ka rate isi total ÷ selected month ke calendar days hoga. Sirf company structure revise kare tab values badlein.</div></section>
+<section class="card"><h2>Current month extra duty</h2><div class="grid">
+<div class="field"><label for="sat">Saturday payable duty days</label><input id="sat" type="number" min="0" step="1" value="0"></div>
+<div class="field"><label for="sun">Sunday payable duty days</label><input id="sun" type="number" min="0" step="1" value="0"></div>
+<div class="field"><label for="holiday">Fixed holiday duty days (1.5×)</label><input id="holiday" type="number" min="0" step="1" value="0"></div>
+<div class="field"><label for="kpi">KPI level</label><select id="kpi"><option value="0">None</option><option value="100">P1 – ₹100</option><option value="200">P2 – ₹200</option><option value="300">P3 – ₹300</option><option value="400">P4 – ₹400</option><option value="500">P5 – ₹500</option></select></div>
+</div><div class="hint">Saturday/Sunday mein sirf woh days daalein jo company ke 25th cutoff ke hisaab se is salary mein payable hain. 25th ke baad ke days agle month mein count karein.</div></section>
+<section class="card"><h2>Previous month pending weekend duty</h2><div class="grid">
+<div class="field"><label for="pending">Previous month pending days (after 25th)</label><input id="pending" type="number" min="0" step="1" value="0"></div>
+<div class="field full"><label>Previous month calculation</label><input id="previnfo" type="text" readonly></div>
+</div><div class="hint">Aap sirf pending days (jaise 1 ya 2) bharein. App previous month aur uske 28/29/30/31 calendar days khud pehchanega. Previous month ke calendar days app khud nikalega. Pending duty ka rate saved salary structure ke total ko previous month ke days se divide karke niklega.</div></section>
+<section class="card"><h2>Deductions</h2><div class="grid">
+<div class="field"><label for="pf">PF (₹)</label><input id="pf" type="number" min="0" step="0.01" value="2443"></div>
+<div class="field"><label for="esi">ESI (₹)</label><input id="esi" type="number" min="0" step="0.01" value="153"></div>
+<div class="field"><label for="pt">Professional Tax (₹)</label><input id="pt" type="number" min="0" step="0.01" value="200"></div>
+<div class="field"><label for="otherded">Other deductions (₹)</label><input id="otherded" type="number" min="0" step="0.01" value="471.60"></div>
+</div></section>
+<section class="result"><div class="label">Estimated take-home salary</div><div class="amount" id="net">₹0.00</div><div class="rows" id="breakdown"></div></section>
+<button class="btn" id="reset">Reset extra duty & KPI</button><div class="small">Saved salary structure salary slips par based hai; Special Allowance ₹1,000 fixed monthly earning mein included hai. Sirf salary revision hone par components update karein. Estimate actual payroll rules se thoda differ ho sakta hai.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+months.forEach((m,i)=>{let o=document.createElement('option');o.value=i;o.textContent=m;$('month').appendChild(o)});
+$('month').value=9;$('year').value=2026;
+const num=id=>Math.max(0,Number($(id).value)||0);const money=n=>'₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+function calc(){let mi=Number($('month').value),yr=Math.trunc(Number($('year').value)||2026);if(yr<2000||yr>2100)yr=2026;let days=new Date(yr,mi+1,0).getDate();let prevDate=new Date(yr,mi-1,1),pmi=prevDate.getMonth(),pyr=prevDate.getFullYear(),pdays=new Date(pyr,pmi+1,0).getDate();let fixed=num('basic')+num('conveyance')+num('leave')+num('bonus');let monthlyFixed=fixed+num('special');$('fixed').value=money(fixed);$('monthlyfixed').value=money(monthlyFixed);let rate=fixed/days,prevRate=fixed/pdays;let sat=num('sat'),sun=num('sun'),hol=num('holiday'),pending=num('pending'),kpi=num('kpi');let weekend=(sat+sun)*rate,holiday=hol*rate*1.5,prev=pending*prevRate;let ded=num('pf')+num('esi')+num('pt')+num('otherded');let gross=monthlyFixed+kpi+weekend+holiday+prev,net=gross-ded;
+$('previnfo').value=`${months[pmi]} ${pyr}: ${pdays} days | Rate ${money(prevRate)}/day`;
+$('net').textContent=money(net);let lines=[['Fixed monthly salary incl. Special Allowance',monthlyFixed],['Current Sat/Sun duty',weekend],['Fixed holiday duty (1.5×)',holiday],['KPI bonus',kpi],['Previous month pending weekend',prev],['Gross earnings',gross],['Total deductions',-ded]];$('breakdown').innerHTML=lines.map(([l,v])=>`<div class="sub">${l}</div><div>${v<0?'−':''}${money(Math.abs(v))}</div>`).join('');}
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',calc));$('reset').addEventListener('click',()=>{['sat','sun','holiday','pending'].forEach(id=>$(id).value=0);$('kpi').value=0;calc()});calc();
+</script></body></html>

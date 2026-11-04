@@ -1,0 +1,13 @@
+SALARY CALCULATOR ANDROID PROJECT
+
+Yeh Android Studio project hai; APK abhi compile nahi hua hai.
+
+APK banane ke liye:
+1. Computer par Android Studio install karein.
+2. Android Studio > Open par jaakar is folder ko select karein.
+3. Gradle sync complete hone dein (internet zaroori hai, Android SDK 35 install karne ka prompt aa sakta hai).
+4. Build > Build Bundle(s) / APK(s) > Build APK(s) par click karein.
+5. APK app/build/outputs/apk/debug/app-debug.apk mein milega.
+6. APK phone mein bhejkar install karein. Phone par unknown-app installation permission maangi ja sakti hai.
+
+App offline WebView mein aapka existing salary calculator kholta hai. JavaScript aur local storage enabled hain.

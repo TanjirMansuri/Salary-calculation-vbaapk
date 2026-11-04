@@ -1,0 +1,14 @@
+PHONE SE APK BANANE KA TARIKA (Cloud Build)
+
+Is project mein GitHub Actions workflow add hai. GitHub ke free account se cloud par APK build ho sakta hai.
+
+1) Chrome mein github.com kholkar free account banayein / sign in karein.
+2) New repository banayein; naam SalaryCalculator rakhein; Public ya Private dono chalenge.
+3) Project ZIP ko phone mein extract karein.
+4) GitHub repository mein Add file > Upload files se extracted project ke ANDAR ke sab files/folders upload karein. Dhyan rahe .github/workflows/build-apk.yml bhi upload ho.
+5) Commit changes karein.
+6) Repository ke Actions tab mein “Build Salary Calculator APK” workflow kholein. Agar run khud start na ho, Run workflow dabayein.
+7) Build complete hone par run page ke neeche Artifacts mein SalaryCalculator-debug-apk download karein.
+8) Downloaded artifact ZIP extract karein. app-debug.apk par tap karke install karein. Android agar permission mange to Chrome/Files ko “Install unknown apps” allow karein.
+
+Note: GitHub ka cloud build internet par project files process karega. Salary details ya salary slip upload karne ki zaroorat nahi. Sirf app source project upload karein. APK debug build hai, personal use/testing ke liye.
