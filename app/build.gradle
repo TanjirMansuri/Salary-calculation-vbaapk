@@ -1,1 +1,13 @@
-// Android app configuration likh dein.
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.personal.salarycalculator'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.personal.salarycalculator'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+}
